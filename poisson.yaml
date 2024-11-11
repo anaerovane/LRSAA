@@ -1,0 +1,4 @@
+image_path: 'E:/mbnet/gaode/kkc/18.tiff'
+output_directory: 'E:/mbnet/gaode/kkc/18_image'
+output_label_directory: 'E:/mbnet/gaode/kkc/18_label'
+sample_radius: 100 
