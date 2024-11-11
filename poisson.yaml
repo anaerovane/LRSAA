@@ -1,4 +1,8 @@
-image_path: 'E:/mbnet/gaode/kkc/18.tiff'
-output_directory: 'E:/mbnet/gaode/kkc/18_image'
-output_label_directory: 'E:/mbnet/gaode/kkc/18_label'
-sample_radius: 100 
+image_path: 'E:/mbnet/gaode/gz/18_Corrected.tiff'
+output_directory: 'E:/mbnet/gaode/gz/18_image'
+output_label_directory: 'E:/mbnet/gaode/gz/18_label'
+output_labelnew_directory: 'E:/mbnet/gaode/gz/18_labelnew'
+jpg_directory: 'E:/mbnet/gaode/gz/18_jpg'
+output_image_path: 'E:/mbnet/gaode/gz/18new.tiff'
+output_jsonl_path: 'E:/mbnet/gaode/gz/18new.jsonl'
+sample_radius: 200 
