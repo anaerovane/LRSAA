@@ -22,7 +22,7 @@ def readtxt(output_labelnew_dir):
     return result
 
 def draw_bbox(tif_path, out_tif_path,result):
-    Image.MAX_IMAGE_PIXELS = 1000000000  
+    Image.MAX_IMAGE_PIXELS = 10000000000  
     image = Image.open(tif_path)
     draw = ImageDraw.Draw(image)
 

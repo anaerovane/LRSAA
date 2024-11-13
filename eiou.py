@@ -54,6 +54,6 @@ def nms_with_eiou(boxes, threshold=0.5):
     
     return keep
 
-def resultnew(result,threshold=0.4):
-    result0 = nms_with_eiou(result, threshold=0.4)
+def resultnew(result,threshold=0.25):
+    result0 = nms_with_eiou(result, threshold=0.25)
     return result0

@@ -1,5 +1,6 @@
 import yaml
 from PIL import Image
+import argparse
 import os
 import json
 from poisson_cut import *
@@ -20,10 +21,9 @@ def tojsonl(result0,output_jsonl_path):
         for item in result0:
             f.write(json.dumps(item) + '\n')
 
-if __name__ == '__main__':
+def main(yaml_file):
     yaml_data = read_yaml('poisson.yaml')
     print(yaml_data)
-
     image_path = yaml_data['image_path']
     output_directory = yaml_data['output_directory']
     sample_radius = int(yaml_data['sample_radius'])
@@ -36,9 +36,9 @@ if __name__ == '__main__':
     os.makedirs(jpg_dir,exist_ok=True)
     os.makedirs(output_directory, exist_ok=True)
     os.makedirs(output_labelnew_dir, exist_ok=True)
-    crop_size = (640, 640)
+    crop_size = (1280, 1280)
     
-    Image.MAX_IMAGE_PIXELS = 1000000000  
+    Image.MAX_IMAGE_PIXELS = 10000000000  
     original_image = Image.open(image_path)
     width, height = original_image.size
     print(f"width: {width}, height: {height}")
@@ -62,6 +62,15 @@ if __name__ == '__main__':
     tojsonl(result0,output_jsonl_path)
 
     draw_bbox(image_path, output_image_path, result0)
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Read a YAML file')
+    parser.add_argument('--yaml', required=True, help='Path to the YAML file to be read')
+    args = parser.parse_args()
+    filename = args.yaml
+    main(filename)
+
+   
 
 
 

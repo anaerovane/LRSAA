@@ -6,14 +6,6 @@ import os
 from tqdm import tqdm
 
 def poisson_disk_sampling(width, height, r, k=30):
-    """
-    泊松盘采样函数，允许重叠
-    :param width: 原始图像宽度
-    :param height: 原始图像高度
-    :param r: 最小距离（可以小于裁剪窗口的一半）
-    :param k: 尝试次数
-    :return: 采样点列表
-    """
     cell_size = r / np.sqrt(2)
     grid_width = int(np.ceil(width / cell_size))
     grid_height = int(np.ceil(height / cell_size))
@@ -61,14 +53,6 @@ def poisson_disk_sampling(width, height, r, k=30):
     return points
 
 def ensure_coverage(points, width, height, crop_size):
-    """
-    确保整个图像被覆盖
-    :param points: 初始采样点列表
-    :param width: 原始图像宽度
-    :param height: 原始图像高度
-    :param crop_size: 裁剪窗口大小
-    :return: 更新后的采样点列表
-    """
     tree = KDTree(points)
     step = crop_size // 2
     for y in range(0, height, step):
@@ -80,14 +64,7 @@ def ensure_coverage(points, width, height, crop_size):
     return points
 
 def save_cropped_images(image_path, output_dir, output_label_dir,sample_points, size=(640, 640)):
-    """
-    根据采样点保存裁剪后的图像
-    :param image_path: 原始图像路径
-    :param output_dir: 输出目录
-    :param sample_points: 采样点列表
-    :param size: 裁剪图像大小
-    """
-    Image.MAX_IMAGE_PIXELS = 1000000000  
+    Image.MAX_IMAGE_PIXELS = 10000000000
     original_image = Image.open(image_path)
     width, height = original_image.size
 
