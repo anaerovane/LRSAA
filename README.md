@@ -1,7 +1,9 @@
 # LRSAA
 Large-scale remote sensing image target recognition and automatic annotation
 
-You can now find the preprint of the paper on arxiv: 
+You can now find the preprint of the dependent paper on arxiv: 
+
+https://arxiv.org/abs/2411.07802
 
 ### Installation
 
@@ -32,4 +34,8 @@ output_image_path: 'E:/mbnet/sh/18new.tiff'
 output_jsonl_path: 'E:/mbnet/sh/18new.jsonl'
 sample_radius: 500
 ```
+
+### Contact
+
+Email: aerovane@mail.nankai.edu.cn (Wuzheng Dong)
 
