@@ -35,6 +35,8 @@ output_jsonl_path: 'E:/mbnet/sh/18new.jsonl'
 sample_radius: 500
 ```
 
+We conducted the tests on both Windows CPU systems and Ubuntu 22.04LTS GPU systems (with an Nvidia Tesla M40 GPU VRAM12G)
+
 ### Contact
 
 Email: aerovane@mail.nankai.edu.cn (Wuzheng Dong)
