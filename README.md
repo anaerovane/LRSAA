@@ -17,10 +17,28 @@ pip install -r requirements.txt
 
 ### Usage
 
+#### Recommend
+
 ```
 cd LRSAA
 python main.py --yaml poisson.yaml
 ```
+
+#### Test
+
+##### Cut-only (for test)
+
+```
+python cutonly.py --yaml poisson.yaml
+```
+
+##### Result-only (for test)
+
+```
+python resultonly.py --yaml poisson.yaml
+```
+
+#### YAML
 
 poisson.yaml file need to be created as follows
 
