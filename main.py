@@ -3,10 +3,10 @@ from PIL import Image
 import argparse
 import os
 import json
-from poisson_cut import *
-from yolodetect import *
-from generate import *
-from eiou import resultnew
+from utils.poissoncut import *
+from utils.yolodetect import *
+from utils.generate import *
+from utils.eiou import resultnew
 
 def read_yaml(file_path):
     try:
@@ -24,25 +24,30 @@ def tojsonl(result0,output_jsonl_path):
 def main(yaml_file):
     yaml_data = read_yaml('poisson.yaml')
     print(yaml_data)
+
     image_path = yaml_data['image_path']
     output_directory = yaml_data['output_directory']
     sample_radius = int(yaml_data['sample_radius'])
     output_label_dir = yaml_data['output_label_directory']
-    output_labelnew_dir=yaml_data['output_labelnew_directory']
+    output_labelnew_path=yaml_data['output_labelnew_path']
     jpg_dir=yaml_data['jpg_directory']
     output_image_path = yaml_data['output_image_path']
     output_jsonl_path = yaml_data['output_jsonl_path']
+    threshold=yaml_data['threshold'] if 'threshold' in yaml_data else 0.5
+    cropwidth=yaml_data['cropwidth'] if 'cropwidth' in yaml_data else 640
+    cropheight=yaml_data['cropheight'] if 'cropheight' in yaml_data else 640
 
     os.makedirs(jpg_dir,exist_ok=True)
     os.makedirs(output_directory, exist_ok=True)
-    os.makedirs(output_labelnew_dir, exist_ok=True)
-    crop_size = (1280, 1280)
+    if not output_labelnew_path.endswith('.txt'):
+        os.makedirs(output_labelnew_path, exist_ok=True)
+    crop_size = (cropwidth, cropheight)
     
     Image.MAX_IMAGE_PIXELS = 10000000000  
     original_image = Image.open(image_path)
     width, height = original_image.size
     print(f"width: {width}, height: {height}")
-    sample_points = poisson_disk_sampling(width,height, sample_radius)
+    sample_points = poisson_disk_sampling(width, height, sample_radius)
     print("sample complete")
 
     sample_points = ensure_coverage(sample_points, width, height, crop_size[0])
@@ -51,13 +56,13 @@ def main(yaml_file):
     save_cropped_images(image_path, output_directory, output_label_dir,sample_points, crop_size)
     print("cropped images saved")
 
-    label_main(output_directory,output_label_dir,output_labelnew_dir,jpg_dir)
+    label_main(output_directory,output_label_dir,output_labelnew_path,jpg_dir)
     print("labels generated")
 
-    result=readtxt(output_labelnew_dir)
+    result=readtxt(output_labelnew_path)
     print(f"result complete: {len(result)}")
 
-    result0=resultnew(result)
+    result0=resultnew(result,threshold)
     print(f"result0 complete: {len(result0)}")
     tojsonl(result0,output_jsonl_path)
 

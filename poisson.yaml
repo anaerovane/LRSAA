@@ -1,7 +1,7 @@
 image_path: 'E:/mbnet/gaode/xm/18.tiff'
 output_directory: 'E:/mbnet/gaode/xm/18_image'
 output_label_directory: 'E:/mbnet/gaode/xm/18_label'
-output_labelnew_directory: 'E:/mbnet/gaode/xm/18_labelnew'
+output_labelnew_path: 'E:/mbnet/gaode/xm/18_labelnew'  #dir or file ending with .txt are both ok
 jpg_directory: 'E:/mbnet/gaode/xm/18_jpg'
 output_image_path: 'E:/mbnet/gaode/xm/18new.tiff'
 output_jsonl_path: 'E:/mbnet/gaode/xm/18new.jsonl'
