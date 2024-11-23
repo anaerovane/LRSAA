@@ -128,7 +128,7 @@ model.train()
 optimizer = optim.SGD(model.parameters(), lr=0.005, momentum=0.9, weight_decay=0.0005)
 
 
-num_epochs = 50
+num_epochs = 10
 for epoch in range(num_epochs):
     for images, targets in tqdm(data_loader):
         images = [image.to(device) for image in images]
@@ -154,4 +154,4 @@ for epoch in range(num_epochs):
 
     print(f"Epoch {epoch+1}/{num_epochs}, Loss: {losses.item()}")
 
-torch.save(model.state_dict(), 'GPU20ssdlite320_mobilenet_v3_large.pth')
+torch.save(model.state_dict(), 'GPU10ssdlite320_mobilenet_v3_large.pth')

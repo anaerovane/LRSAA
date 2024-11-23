@@ -5,7 +5,9 @@ You can now find the preprint of the dependent paper on arxiv:
 
 https://arxiv.org/abs/2411.07802
 
-### Installation
+
+
+## Installation
 
 ```
 git clone https://github.com/anaerovane/LRSAA.git
@@ -15,7 +17,9 @@ conda activate LRSAA
 pip install -r requirements.txt
 ```
 
-### Usage
+
+
+## Usage
 
 #### Recommend
 
@@ -59,13 +63,19 @@ cropheight: 640
 
 We conducted the tests on both Windows CPU systems and Ubuntu 22.04LTS GPU systems (with an Nvidia Tesla M40 GPU VRAM12G)
 
-### Note
 
-We are still making significant modifications and optimizations to the project, including the paper and code!
 
-Please use the project code with caution until we confirm its completion!
+## Result Shown
 
-### Contact
+![6](./6.jpg)
+
+## Note
+
+We are still making significant modifications and optimizations to the project
+
+
+
+## Contact
 
 Email: aerovane@mail.nankai.edu.cn (Wuzheng Dong)
 
